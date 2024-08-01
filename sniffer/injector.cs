@@ -126,21 +126,21 @@ namespace Sniffer
                     int realLength = 0;
 
 
-                    for (int i = ptr; i < readed; i++)
-                    {
-                        if (buffer[i] == '|')
-                        {
-                            realLength = Int32.Parse(strBuilder.ToString());
-                            strBuilder.Clear();
-                            ptr += (i + 1);
-                            break;
-                        }
-                        else
-                        {
-                            var s = (char)buffer[i];
-                            strBuilder.Append(s);
-                        }
-                    }
+                    //for (int i = ptr; i < readed; i++)
+                    //{
+                    //    if (buffer[i] == '|')
+                    //    {
+                    //        realLength = Int32.Parse(strBuilder.ToString());
+                    //        strBuilder.Clear();
+                    //        ptr += (i + 1);
+                    //        break;
+                    //    }
+                    //    else
+                    //    {
+                    //        var s = (char)buffer[i];
+                    //        strBuilder.Append(s);
+                    //    }
+                    //}
 
                     if (buffer[ptr] == 's')
                     {
@@ -149,6 +149,10 @@ namespace Sniffer
                     else if (buffer[ptr] == 'r')
                     {
                         package.type = "recv";
+                    }
+                    else
+                    {
+                        throw new Exception("invalid data type");
                     }
 
                     // extract addr
@@ -183,19 +187,19 @@ namespace Sniffer
 
                     package.socketHandle = Int64.Parse(strBuilder.ToString());
 
-                    package.data = new byte[realLength];
+                    package.data = new byte[readed - ptr - 1];
 
                     int counter = 0;
                     bool haveAnotherPackage = false;
                     for (int i = ptr + 1; i < readed; i++)
                     {
                         ptr = i;
-                        // another package starting
-                        if (counter + 1 > realLength)
-                        {
-                            haveAnotherPackage = true;
-                            break;
-                        }
+                        //// another package starting
+                        //if (counter + 1 > realLength)
+                        //{
+                        //    haveAnotherPackage = true;
+                        //    break;
+                        //}
                         package.data[counter] = buffer[i];
                         counter++;
                     }
@@ -205,10 +209,11 @@ namespace Sniffer
                         this.form.AddPackage(package);
                     }));
 
-                    if (!haveAnotherPackage)
-                    {
-                        break;
-                    }
+                    //if (!haveAnotherPackage)
+                    //{
+                    //    break;
+                    //}
+                    break;
                 }
             }
         }

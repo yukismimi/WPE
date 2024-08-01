@@ -79,6 +79,7 @@
             // listView1
             // 
             this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listView1.MultiSelect = false;
             this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -292,7 +293,7 @@
             this.playPackagesButton.Name = "playPackagesButton";
             this.playPackagesButton.Size = new System.Drawing.Size(24, 22);
             this.playPackagesButton.TabIndex = 13;
-            this.addToolTip.SetToolTip(this.playPackagesButton, "Send selected packages");
+            this.addToolTip.SetToolTip(this.playPackagesButton, "Send all packages");
             this.playPackagesButton.UseVisualStyleBackColor = true;
             this.playPackagesButton.Click += new System.EventHandler(this.playPackagesButton_Click);
             // 
@@ -351,7 +352,7 @@
             this.Controls.Add(this.listView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "NullBlock WPE";
+            this.Text = "WPE - Modified by enako - qq:503542524";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

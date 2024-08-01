@@ -142,7 +142,7 @@ namespace Sniffer
                     var packageName = stream.ReadString();
                     var countBytes = stream.ReadInt32();
                     var bytes = stream.ReadBytes(countBytes);
-                    var handle = stream.ReadInt32();
+                    var handle = stream.ReadInt64();
 
                     var pkg = new MessagePackage(bytes, handle);
                     AddLast(packageName, pkg);

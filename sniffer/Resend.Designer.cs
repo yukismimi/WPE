@@ -1,4 +1,6 @@
-﻿namespace Sniffer
+﻿using System;
+
+namespace Sniffer
 {
     partial class Resend
     {
@@ -25,25 +27,33 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeComponent(MessagePackage[] ps)
         {
             this.button1 = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            // times
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            // ms
             this.label3 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            // interval
             this.label2 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.statusLabel = new System.Windows.Forms.Label();
+            // socket
+            this.label4 = new System.Windows.Forms.Label();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            //this.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(48, 92);
+            this.button1.Location = new System.Drawing.Point(48, 130);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -84,9 +94,11 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.numericUpDown3);
             this.groupBox1.Location = new System.Drawing.Point(12, 1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(138, 85);
+            this.groupBox1.Size = new System.Drawing.Size(138, 120);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "params";
@@ -138,7 +150,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 121);
+            this.progressBar1.Location = new System.Drawing.Point(12, 153);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(138, 10);
             this.progressBar1.TabIndex = 4;
@@ -146,16 +158,49 @@
             // statusLabel
             // 
             this.statusLabel.ForeColor = System.Drawing.Color.Red;
-            this.statusLabel.Location = new System.Drawing.Point(4, 134);
+            this.statusLabel.Location = new System.Drawing.Point(4, 166);
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(156, 32);
             this.statusLabel.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "socket:";
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Location = new System.Drawing.Point(51, 89);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(60, 20);
+            this.numericUpDown3.TabIndex = 4;
+            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_Changed);
+            this.numericUpDown3.Value = new decimal(new int[] {
+            ps == null ? 1 : Convert.ToInt32(ps[0].socketHandle),
+            0,
+            0,
+            0});
+
             // 
             // Resend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(160, 163);
+            this.ClientSize = new System.Drawing.Size(160, 200);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.groupBox1);
@@ -173,6 +218,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -188,5 +234,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown numericUpDown3; // socketHandle
     }
 }

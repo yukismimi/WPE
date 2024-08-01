@@ -22,7 +22,7 @@ namespace Sniffer
 
         public Resend(Form1 f, MessagePackage[] ps)
         {
-            InitializeComponent();
+            InitializeComponent(ps);
             progressBar1.Visible = false;
             form = f;
             packages = ps;
@@ -129,13 +129,21 @@ namespace Sniffer
             progressBar1.Value = 0;
             progressBar1.Maximum = total;
 
+            SetSocketIDToAllPackage(Decimal.ToInt32(numericUpDown3.Value));
+
             numericUpDown1.Enabled = false;
             numericUpDown2.Enabled = false;
+            numericUpDown3.Enabled = false;
             timer.Start();
             
             started = true;
             packageCursor = 0;
             button1.Text = "stop";
+        }
+
+        private void numericUpDown3_Changed(object sender, EventArgs e)
+        {
+            Console.WriteLine(this.numericUpDown3.Value);
         }
 
         void stop()
@@ -147,6 +155,7 @@ namespace Sniffer
 
             numericUpDown1.Enabled = true;
             numericUpDown2.Enabled = true;
+            numericUpDown3.Enabled = true;
         }
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -179,6 +188,14 @@ namespace Sniffer
                 }
             })
             );
+        }
+
+        private void SetSocketIDToAllPackage(int socketID)
+        {
+            foreach (var package in packages)
+            {
+                package.socketHandle = socketID;
+            }
         }
     }
 }

@@ -442,21 +442,21 @@ namespace Sniffer
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            /*saveFileDialog1.FileName = "saved_filters.csv";
-            
+            saveFileDialog1.FileName = "saved_filters.csv";
+
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 sendingList.SaveAllToFile(saveFileDialog1.FileName);
             }
-            */
+
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {/*
+        {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 sendingList.LoadFromFile(openFileDialog1.FileName);
-            }*/
+            }
         }
     }
 }
